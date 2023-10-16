@@ -9,8 +9,6 @@ const wrapper = document.querySelector('.slider__content'),
     rightBtn = document.querySelector('.icon-right-open'),
     leftBtn = document.querySelector('.icon-left-open')
 
-
-
 function getTemplate(url) {
     let elemArr = urlJpg[url]
     return `
@@ -21,7 +19,6 @@ function getTemplate(url) {
 }
 
 rightBtn.addEventListener('click', () => {
-    
     render()
 })
 
@@ -32,10 +29,10 @@ leftBtn.addEventListener('click', () => {
 let startPosition = 0
 
 function render() {
-    if(startPosition < 4 ) {
+    if(startPosition < urlJpg.length ) {
         wrapper.innerHTML = getTemplate(startPosition)
         startPosition++
-    } else if(startPosition == 4){
+    } else if(startPosition == urlJpg.length ){
         startPosition = 0
         wrapper.innerHTML = getTemplate(startPosition)
         startPosition++
@@ -43,11 +40,11 @@ function render() {
 }
 
 function renderLeft() {
-    if(startPosition <= 4 && startPosition >= 0) {
+    if(startPosition <= urlJpg.length  && startPosition >= 0) {
         wrapper.innerHTML = getTemplate(startPosition)
         startPosition--
     } else if (startPosition < 0){
-        startPosition = 3
+        startPosition = urlJpg.length - 1
         wrapper.innerHTML = getTemplate(startPosition)
         startPosition--
 
